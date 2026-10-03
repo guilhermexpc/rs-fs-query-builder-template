@@ -12,6 +12,8 @@ app.post("/course", async (request: Request, response: Response) => {
   const { name } = request.body;
 
   await knex("courses").insert({ name });
+  // Insert using raw SQL query
+  // await knex.raw("Insert into courses (name) values (?)", [name]);
 
   response.status(201).json({ name });
 });

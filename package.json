@@ -2,7 +2,7 @@
   "name": "query_builder",
   "version": "1.0.0",
   "description": "Aulas de Query builder",
-  "main": "index.js",
+  "main": "src/server.ts",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "knex": "node --import tsx ./node_modules/knex/bin/cli.js"
