@@ -4,11 +4,14 @@ import { knex } from "./database/knex";
 const app = express();
 app.use(express.json());
 
-app.get("/", async (request: Request, response: Response) => {
-  response.json({ message: "Hello World!" });
+app.get("/courses", async (request: Request, response: Response) => {
+  const coursesRaw = await knex.raw("Select * from courses");
+  console.log(coursesRaw);
+  const courses = await knex("courses").select().orderBy("name", "asc");
+  response.json(courses);
 });
 
-app.post("/course", async (request: Request, response: Response) => {
+app.post("/courses", async (request: Request, response: Response) => {
   const { name } = request.body;
 
   await knex("courses").insert({ name });
